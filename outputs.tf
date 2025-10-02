@@ -1,4 +1,3 @@
-# Core endpoints / names
 output "alb_dns_name" {
   description = "Public DNS name to reach the app on port 80"
   value       = aws_lb.this.dns_name
@@ -19,7 +18,6 @@ output "service_name" {
   value       = aws_ecs_service.app.name
 }
 
-# Task definition visibility
 output "task_definition_arn" {
   description = "ARN of the current task definition revision"
   value       = aws_ecs_task_definition.app.arn
