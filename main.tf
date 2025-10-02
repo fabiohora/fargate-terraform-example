@@ -8,13 +8,6 @@ resource "aws_ecr_repository" "app" {
   }
 }
 
-
-resource "aws_cloudwatch_log_group" "app" {
-  name              = "/ecs/${local.name}"
-  retention_in_days = 7
-}
-
-
 resource "aws_ecs_cluster" "this" {
   name = "${local.name}-cluster"
 }
@@ -111,14 +104,6 @@ resource "aws_ecs_task_definition" "app" {
       portMappings = [
         { containerPort = var.container_port, protocol = "tcp" }
       ],
-      logConfiguration = {
-        logDriver = "awslogs",
-        options = {
-          awslogs-group         = aws_cloudwatch_log_group.app.name,
-          awslogs-region        = var.aws_region,
-          awslogs-stream-prefix = "app"
-        }
-      }
     }
   ])
 }
