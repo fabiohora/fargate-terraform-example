@@ -12,8 +12,6 @@ This repository contains Terraform configurations to deploy a containerized appl
 
 ```
 Internet → ALB (Port 80) → ECS Service (Fargate) → ECR Repository
-                ↓
-            CloudWatch Logs
 ```
 
 ## Prerequisites
